@@ -13,4 +13,5 @@ import java.util.Optional;
 public interface ProjectRepository extends JpaRepository<Project, Long> {
     Page<Project> findByStaffId(Long staff, Pageable pageable);
     Optional<Project> findByIdAndStaffId(Long id, Long staffId);
+
 }

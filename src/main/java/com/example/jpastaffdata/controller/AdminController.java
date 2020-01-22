@@ -1,5 +1,6 @@
 package com.example.jpastaffdata.controller;
 
+import com.example.jpastaffdata.exception.AdminResponse;
 import com.example.jpastaffdata.exception.ResourceNotFoundException;
 import com.example.jpastaffdata.model.Admin;
 import com.example.jpastaffdata.repository.AdminRepository;
@@ -10,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
 @RestController
 public class AdminController {
@@ -43,5 +45,12 @@ public class AdminController {
             return ResponseEntity.ok().build();
         }).orElseThrow(() -> new ResourceNotFoundException("AdminId " + " not found"));
     }
+
+    @GetMapping("/getInfo")
+    public List<AdminResponse> getAllInfo() {
+        return adminRepository.getAllInformation();
+    }
+
+
 
 }
